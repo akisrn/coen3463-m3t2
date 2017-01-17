@@ -1,0 +1,94 @@
+doctype html
+html
+  head
+    title Dashboard
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    // Bootstrap
+    link(href='bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // styles
+    link(href='css/styles.css', rel='stylesheet')
+  body
+    .header
+      .container
+        .row
+          .col-md-5
+            // Logo
+            .logo
+              h1
+                a(href='/') Successful Kickstarter Projects
+    .page-content
+      .row
+        .col-md-2
+          .sidebar.content-box(style='display: block;')
+            ul.nav
+              // Main menu
+              li.current
+                form.form-inline(method='post', action='/')
+                  .form-group
+                  button.btn.btn-default(style='width:170px')
+                    i.glyphicon.glyphicon-home
+                    |  Dashboard
+              li
+                form.form-inline(method='post', action='/kickstarters')
+                  .form-group
+                  button.btn.btn-default(style='width:170px')
+                    i.glyphicon.glyphicon-list
+                    |  Database
+        .col-md-10
+          .row
+            .col-md-6
+              .content-box-large
+                .panel-heading
+                  .panel-title What is a Kickstarter Project?
+                .panel-body
+                  | Kickstarter is a vibrant community of people working together to bring new things to life. Since it was founded in 2009, Kickstarter has acted as a groundswell of support for many innovative endeavors, connecting fans to the creators of the projects they want to see made. 
+                  br
+                  br
+                  | 				  			In the 2014, the Coolest Cooler was the leader of the pack in terms of money raised. In spring of 2015, Ryan Grepper's invention was eclipsed by the Pebble Time, in a return trip for smartwatch maker Pebble, which got its start on Kickstarter in 2012. Now five out of the ten most funded campaigns getting major buy in from backers in significant numbers, it seems that crowdfunding has become a more viable option for new companies and projects than ever before.  
+                  br
+                  br
+            .col-md-6
+              .row
+                .col-md-12
+                  .content-box-header
+                    .panel-title Start your own project with Kickstarter now!
+                  .content-box-large.box-with-header
+                    | Bring your creative project to life. Every project on Kickstarter must be creating something new to share with others. A project has a clear goal, like making an album, a book, or a work of art. A project will eventually be completed, and something will be produced by it. 
+                    br
+                    br
+                    | 								Kickstarter does not allow projects to fundraise for charity or offer financial incentives. Check our rules for more details.
+                    br
+                    br
+              .row
+                .col-md-12
+                  .content-box-header
+                    .panel-title What are the basics?
+                  .content-box-large.box-with-header
+                    | A project is a finite work with a clear goal that you’d like to bring to life. Think albums, books, or films. 
+                    | The funding goal is the amount of money that a creator needs to complete their project. 
+                    br
+                    br
+                    | 								Funding on Kickstarter is all-or-nothing. No one will be charged for a pledge towards a project unless it reaches its funding goal. This way, creators always have the budget they scoped out before moving forward.
+                    br
+                    br
+                    | 								A creator is the person or team behind the project idea, working to bring it to life.
+                    br
+                    br
+                    | 								Backers are folks who pledge money to join creators in bringing projects to life.
+                    br
+                    br
+                    | 								Rewards are a creator's chance to share a piece of their project with their backer community. Typically, these are one-of-a-kind experiences, limited editions, or copies of the creative work being produced.
+                    br
+                    br
+                    | 								If you want to know more about how it works, try browsing around and looking at some of the projects on the site — you can start right here. If you’re curious about starting a project, our Creator Handbook can give you a great overview.
+                    br
+                    br
+    footer
+      .container
+        .copy.text-center
+          | © Soriano | Lumbreras | BSCpE 5-1
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src='https://code.jquery.com/jquery.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    script(src='bootstrap/js/bootstrap.min.js')
+    script(src='js/custom.js')

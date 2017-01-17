@@ -1,0 +1,119 @@
+doctype html
+html
+  head
+    title Information
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    // jQuery UI
+    link(href='https://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css', rel='stylesheet', media='screen')
+    // Bootstrap
+    link(href='/./bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // styles
+    link(href='/./css/styles.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js')
+  body
+    .header
+      .container
+        .row
+          .col-md-5
+            // Logo
+            .logo
+              h1
+                a(href='/') Successful Kickstarter Projects
+    .page-content
+      .row
+        .col-md-2
+          .sidebar.content-box(style='display: block;')
+            ul.nav
+              // Main menu
+              li.current
+                form.form-inline(method='post', action='/')
+                  .form-group
+                  button.btn.btn-default(style='width:170px')
+                    i.glyphicon.glyphicon-home
+                    |  Dashboard
+              li
+                form.form-inline(method='post', action='/kickstarters')
+                  .form-group
+                  button.btn.btn-default(style='width:170px')
+                    i.glyphicon.glyphicon-list
+                    |  Database
+        .col-md-10
+          .row
+            .col-md-15
+              .content-box-large
+                .panel-heading
+                  .panel-title Kickstarter Project Full Information
+                  .panel-options
+                    form.form-inline(method='post', action='/kickstarter/:kickstarterId/update')
+                      .form-group
+                      input.form-control(type='hidden', name='kickstarter_id' value = "#{kickstarter._id}")
+                      button.btn.btn-warning(style='width:200px') Update This Entry
+                    br
+                    form.form-inline(method='post', action='/kickstarter/:kickstarterId/delete')
+                      .form-group
+                      input.form-control(type='hidden', name='kickstarter_id' value = "#{kickstarter.project_name}")
+                      button.btn.btn-danger(style='width:200px') Delete This Entry
+                .panel-body
+                 form.form-inline(method='post', action='/preview')
+                  .form-group
+                  center
+                   table.table
+                    tbody
+                      tr.success
+                        td Project Name
+                        td #{kickstarter.project_name}
+                      tr.danger
+                        td Raised Amount
+                        td #{kickstarter.raised_amount}
+                      tr.warning
+                        td Funding Date
+                        td #{kickstarter.funding_date}
+                      tr.success
+                        td Website
+                        td #{kickstarter.website}
+                      tr.danger
+                        td Kickstarter Page Link
+                        td #{kickstarter.kickstarter_page}
+                      tr.warning
+                        td Kickstarter Fund Goal 
+                        td #{kickstarter.kickstarter_fund}
+                      tr.success
+                        td Youtube Link
+                        td #{kickstarter.youtube_link}
+                      tr.danger
+                        td Location
+                        td #{kickstarter.location}
+                      tr.warning
+                        td Category
+                        td #{kickstarter.category}
+                      tr.success
+                        td Total Number of Backers
+                        td #{kickstarter.backer_count}
+                      tr.danger
+                        td Launch Date
+                        td #{kickstarter.launch_date}
+                      tr.warning
+                        td Social Pages
+                        td #{kickstarter.social_pages}
+                      tr
+                        td(colspan='2')
+                
+    footer
+      .container
+        .copy.text-center
+          | © Soriano | Lumbreras | BSCpE 5-1
+    link(href='/./vendors/datatables/dataTables.bootstrap.css', rel='stylesheet', media='screen')
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src='https://code.jquery.com/jquery.js')
+    // jQuery UI
+    script(src='https://code.jquery.com/ui/1.10.3/jquery-ui.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    script(src='/./bootstrap/js/bootstrap.min.js')
+    script(src='/./vendors/datatables/js/jquery.dataTables.min.js')
+    script(src='/./vendors/datatables/dataTables.bootstrap.js')
+    script(src='/./js/custom.js')
+    script(src='/./js/tables.js')
