@@ -66,25 +66,48 @@ MongoClient.connect(mdbUrl, function(err, database) {
          res.render('new', { title: 'New Entry' });
     });
 
-    //Kickstarters List
-    app.post('/kickstarters', function(req, res) {
+    app.post('/kickstarterslist', function(req, res) {
+        console.log('kickstarters rendered');
         var kickstarterCollection = db.collection('kickstarters');
         kickstarterCollection.find().toArray(function(err, kickstarters) {
-           console.log('kickstarters loaded', kickstarters);
-          res.render('kickstarters', {
-            kickstarters: kickstarters
-          });
+
+           if (err) {
+                console.log(err);
+                res.render('kickstarters', {
+                kickstarters: []
+              });
+            }
+            else
+             {
+               console.log('kickstarters loaded', kickstarters);
+                res.render('kickstarters', {
+                  kickstarters: kickstarters
+                });
+             }
+          
         })
     });
 
     //Kickstarters List
-    app.get('/kickstarters', function(req, res) {
+    app.get('/kickstarterslist', function(req, res) {
+        console.log('kickstarters rendered');
         var kickstarterCollection = db.collection('kickstarters');
         kickstarterCollection.find().toArray(function(err, kickstarters) {
-           console.log('kickstarters loaded', kickstarters);
-          res.render('kickstarters', {
-            kickstarters: kickstarters
-          });
+
+           if (err) {
+                console.log(err);
+                res.render('kickstarters', {
+                kickstarters: []
+              });
+            }
+            else
+             {
+               console.log('kickstarters loaded', kickstarters);
+                res.render('kickstarters', {
+                  kickstarters: kickstarters
+                });
+             }
+          
         })
     });
 
@@ -225,7 +248,7 @@ MongoClient.connect(mdbUrl, function(err, database) {
                                              }
                                           console.log("Updating Data Successfull!");
                                           console.log(req.body.project_name);
-                                          res.redirect('/')
+                                          res.redirect('/kickstarterslist')
 
                                           });
     });
@@ -237,7 +260,7 @@ MongoClient.connect(mdbUrl, function(err, database) {
          var kickstarterCollection = db.collection('kickstarters');
          kickstarterCollection.remove({"project_name":kickstarterName});
          console.log('Entry Deleted');
-         res.redirect('/');
+         res.redirect('/kickstarterslist');
     });
 
     // catch 404 and forward to error handler
