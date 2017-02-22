@@ -1,0 +1,106 @@
+doctype html
+html
+  head
+    title Register
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    // Bootstrap
+    link(href='/./bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // styles
+    link(href='/./css/styles.css', rel='stylesheet')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js')
+  body.login-bg
+    .header
+      .container
+        .row
+          .col-md-12
+            // Logo
+            .logo
+              h1
+                a(href='/') Successful Kickstarter Projects
+    .page-content.container
+            .row
+              .col-md-4.col-md-offset-4
+                .login-wrapper
+                  .content-box-large
+                    .panel-heading
+                        center
+                           h3
+                            b REGISTER
+                    .panel-body
+                      form.form-horizontal(role="form", action="/auth/register", method="post")
+                        if (errorLogUser)
+                          .form-group.has-error
+                              .input-group
+                                input#username.form-control(type='text' name="username" placeholder='Username' required='')
+                                span.input-group-addon
+                                  i.glyphicon.glyphicon-remove-circle
+                              span.help-block
+                                i.fa.fa-warning
+                                |  #{errorLogUser}
+                        else
+                          .form-group
+                            input#username.form-control(name="username", type="text" placeholder='Username' required='')
+                       
+                        .form-group
+                            input#password.form-control(name="password", type="password" placeholder='Password' required='')
+
+                        if (errorLogFirstName)
+                          .form-group.has-error
+                              .input-group
+                                input#first_name.form-control(name="first_name", type="text" placeholder='First Name' required='')
+                                span.input-group-addon
+                                  i.glyphicon.glyphicon-remove-circle
+                              span.help-block
+                                i.fa.fa-warning
+                                |  #{errorLogFirstName}
+
+                        else
+                          .form-group
+                              input#first_name.form-control(name="first_name", type="text" placeholder='First Name' required='')
+
+                        if (errorLogLastName)
+                          .form-group.has-error
+                              .input-group
+                                input#last_name.form-control(name="last_name", type="text" placeholder='Last Name' required='')
+                                span.input-group-addon
+                                  i.glyphicon.glyphicon-remove-circle
+                              span.help-block
+                                i.fa.fa-warning
+                                |  #{errorLogLastName}
+                        else
+                          .form-group
+                              input#last_name.form-control(name="last_name", type="text" placeholder='Last Name' required='')
+
+                        if (errorLogEmail)
+                          .form-group.has-error
+                              .input-group
+                                input#email_add.form-control(type='text' name="email_add" placeholder='Email Address' required='')
+                                span.input-group-addon
+                                  i.glyphicon.glyphicon-remove-circle
+                              span.help-block
+                                i.fa.fa-warning
+                                |  #{errorLogEmail}
+                        else
+                          .form-group
+                            input#email_add.form-control(name="email_add", type="text" placeholder='Email Address' required='')
+                        if (errorLog)
+                          .form-group.has-error
+                            span.help-block
+                              i.fa.fa-warning
+                              |  #{errorLog}
+                        p
+                            br
+                            a.btn.btn-link(href="/") Cancel
+                            button.btn.btn-primary(type="submit", value="Register") Register
+                  .already
+                    p Have an account already?
+                    a(href='/auth/login') Login
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    script(src='https://code.jquery.com/jquery.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    script(src='/./bootstrap/js/bootstrap.min.js')
+    script(src='/./js/custom.js')
