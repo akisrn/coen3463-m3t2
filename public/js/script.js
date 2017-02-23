@@ -1,65 +1,41 @@
 function fieldValidate() {
-	var password = document.getElementById('password').value;
-	var username = document.getElementById('username').value
-	var email = document.getElementById('email').value;
+	var raised_amount = document.getElementsByName('raised_amount').value
+	var funding_date = document.getElementsByName('funding_date').value;
+	var errorMessage = "Invalid input(s):\n\n";
+	var rightInput;
 
-	var checkCount = 0;
+	 //Check Raised Amount
+	if(!/^[0-9.,]+$/.test(raised_amount))
+	 {
+	 	errorMessage += "Raised Amount value not valid!\n"
+	 }
+	else
+	 {
+	 	rightInput++;
+	 }
 
-	var errorMessage = "The following field/s are required, should not be empty, or should be corrected: \n\n";
+	//Check Funding Date
+	if(!/^[0-9.,/]+$/.test(funding_date))
+	 {
+	 	errorMessage += "Funding Date not valid!\n"
+	 }
+	else
+	 {
+	 	rightInput++;
+	 }
 
-	if(username === "") {
-		errorMessage += "Username - should not be empty\n"
-	}
-	else if(username.length < 8) {
-		errorMessage += "Username - Should contain 8 characters or more!\n"
-	}
-	else {
-		checkCount++;
-	}
-
-	if (username != "") {
-		if(checkUserName() === false) {
-			errorMessage += "Username - should not contain any numbers or special characters!\n";
-		}
-		else {
-			checkCount++;	
-		}	
-	}
-	else {
-		checkCount++;
-	}
-
-	if(email === "") {
-		errorMessage += "Email - should not be empty!\n"
-	}
-	else {
-		checkCount++
-	}
-
-	if(password === "") {
-		errorMessage += "Password - should not be empty!\n";
-	}
-	else {
-		checkCount++;
-	}
-
-	if(checkCount === 4) {
+	if(rightInput === 2)
+	 {
 		return true;
-		checkCount = 0;
-	}
-	else {
-		alert(errorMessage);
+		rightInput = 0;
+	 }
+	else
+	 {
+		alert(errorMessage)? "" : location.reload();;
 		return false;
-		checkCount = 0;
-		errorMessage = "The following field/s are required, should not be empty, or should be corrected: \n\n";
-	}
-}
+		rightInput = 0;
+		errorMessage = "Invalid Input: \n\n";
+	 }
 
-function checkUserName() {
-    var username = document.getElementById("username").value;
-    var pattern = new RegExp(/[~.`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?0123456789]/); //unacceptable chars
-    if (pattern.test(username)) {
-        return false;
-    }
-    return true; //good user input
+	
 }

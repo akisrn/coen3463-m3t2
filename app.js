@@ -16,7 +16,11 @@ var users = require('./routes/users');
 var auth = require('./routes/auth');
 var kickstarters = require('./routes/kickstarters');
 
+//Restify
+var methodOverride = require('method-override');
+var restify = require('express-restify-mongoose');
 var app = express();
+var router = express.Router();
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://admin:password@ds145168.mlab.com:45168/kickstarters', function(err, res) {
@@ -33,6 +37,7 @@ mongoose.connect('mongodb://admin:password@ds145168.mlab.com:45168/kickstarters'
         //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
         app.use(logger('dev'));
         app.use(bodyParser.json());
+        app.use(methodOverride());
         app.use(bodyParser.urlencoded({ extended: false }));
         app.use(cookieParser());
         app.use(express.static(path.join(__dirname, 'public')));
@@ -50,6 +55,7 @@ mongoose.connect('mongodb://admin:password@ds145168.mlab.com:45168/kickstarters'
         app.use('/kickstarters/', kickstarters);
 
         var User = require('./models/user');
+        var Kickstarter = require('./models/kickstarter');
         passport.use(User.createStrategy());
 
         passport.serializeUser(User.serializeUser());
@@ -58,6 +64,9 @@ mongoose.connect('mongodb://admin:password@ds145168.mlab.com:45168/kickstarters'
         passport.serializeUser(User.serializeUser());
         passport.deserializeUser(User.deserializeUser());
 
+        //Restify
+        restify.serve(router, Kickstarter);
+        app.use(router);
        
         // catch 404 and forward to error handler
         app.use(function(req, res, next) {
