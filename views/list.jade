@@ -60,15 +60,25 @@ html
                 .panel-body
                   fieldset
                         legend Kickstarter Projects
-                        table(align='right')
+                        table(align='left')
                           tbody
                             tr
+                              td(style='width:10%')
+                                span.glyphicon.glyphicon-search
+                              td(style='width:90%')
+                                .col-md-15
+                                  form(role="form", action= '/kickstarters/new', method="post" onsubmit='searchData()')
+                                    .input-group.form
+                                      input#search.form-control(type= 'text', name='search' placeholder='Search...')       
+                        table(align='right')
+                          tbody
                               td(style='width:80%')
                                 form.form-inline(method='post', action='/kickstarters/new')
                                   .form-group
                                     button.btn.btn-primary(type="submit" style="width:auto;border:none") 
                                       i.glyphicon.glyphicon-pencil
                                       |  New Entry
+                  br
                   table.table.table-hover
                     thead
                       tr
@@ -99,4 +109,4 @@ html
     script(src='../vendors/datatables/dataTables.bootstrap.js')
     script(src='../js/custom.js')
     script(src='../js/tables.js')
-    script(type='text/javascript', src= '../js/script.js')
+    script(src='/./js/script.js')

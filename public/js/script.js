@@ -1,4 +1,5 @@
-function fieldValidate() {
+function fieldValidate()
+ {
 	var raised_amount = document.getElementsByName('raised_amount').value
 	var funding_date = document.getElementsByName('funding_date').value;
 	var errorMessage = "Invalid input(s):\n\n";
@@ -36,6 +37,20 @@ function fieldValidate() {
 		rightInput = 0;
 		errorMessage = "Invalid Input: \n\n";
 	 }
+ }
 
-	
-}
+function searchData()
+ {
+ 	var dataToSearch = document.getElementsByName('search').value
+
+ 	if (dataToSearch = "")
+ 	 {
+ 	 	alert("Enter the name of the Kickstarter Project you want to search!");
+ 	 }
+
+ 	else
+ 	 {
+ 	 	localStorage.setItem("search", dataToSearch);
+		alert(dataToSearch);
+ 	 }
+ }
